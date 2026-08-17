@@ -58,3 +58,15 @@ document.querySelectorAll('.reveal,.goal').forEach(el=>revealObserver.observe(el
 
 document.querySelectorAll('form').forEach(f=>f.addEventListener('submit',e=>e.preventDefault()));
 document.querySelectorAll('.goal[href="#"]').forEach(goal=>goal.addEventListener('click',e=>e.preventDefault()));
+
+// Shared prototype notice for every public platform page that loads this script.
+if(!document.querySelector('link[href="preview-banner.css"]')){
+  const previewStyle=document.createElement('link');
+  previewStyle.rel='stylesheet';previewStyle.href='preview-banner.css';
+  document.head.append(previewStyle);
+}
+if(!document.querySelector('script[src="preview-banner.js"]')){
+  const previewScript=document.createElement('script');
+  previewScript.src='preview-banner.js';
+  document.body.append(previewScript);
+}

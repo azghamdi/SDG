@@ -1,0 +1,8 @@
+.prototype-banner{position:relative;z-index:120;background:#163b2d;color:#fff;border-top:4px solid #55c893;font-family:"IBM Plex Sans Arabic",Arial,sans-serif}
+.prototype-banner__inner{width:min(1180px,calc(100% - 40px));min-height:44px;margin:auto;display:flex;align-items:center;justify-content:center;gap:13px;font-size:13px}
+.prototype-banner__state{display:inline-flex;align-items:center;min-height:25px;padding:0 10px;border-radius:20px;background:#f5c451;color:#142f25;font-weight:700}
+.prototype-banner strong{color:#ffdf8a;font-weight:700}
+.prototype-banner b{display:inline-block;color:#fff;background:#247653;border:1px solid #58ad86;border-radius:5px;padding:2px 8px;margin-right:4px;font-weight:700}
+.prototype-banner__separator{width:1px;height:17px;background:rgba(255,255,255,.28)}
+@media(max-width:650px){.prototype-banner__inner{width:min(100% - 24px,1180px);min-height:55px;gap:8px;flex-wrap:wrap;padding:7px 0;font-size:11px}.prototype-banner__separator{display:none}}
+@media print{.prototype-banner{display:none!important}}

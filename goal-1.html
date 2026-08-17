@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="nds-theme.css">
   <link rel="stylesheet" href="goal-page.css">
   <link rel="stylesheet" href="accessibility.css">
+  <link rel="stylesheet" href="preview-banner.css">
   <link rel="stylesheet" href="page-titles.css">
 </head>
 <body class="gastat-sdg goal-page nds-full-width">
@@ -36,7 +37,7 @@
         <a class="brand nds-brand" href="index.html" aria-label="الهيئة العامة للإحصاء - الرئيسية"><img class="brand__logo nds-brand-logo" src="assets/gastat-logo.svg" alt="الهيئة العامة للإحصاء"></a>
       </div>
       <nav class="nav" aria-label="التنقل الرئيسي"><a href="index.html">الرئيسية</a><a href="about.html">نبذة</a><a href="methodology.html">المنهجية</a><a class="active" href="index.html#goals">الأهداف</a><a href="index.html#kingdom">المملكة والاستدامة</a><a href="index.html#partners">شركاء البيانات</a></nav>
-      <div class="header__tools"><button class="icon-btn nds-btn nds-subtle" aria-label="بحث" id="searchBtn"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4 4"></path></svg></button><a class="lang" href="#">EN</a><button class="menu-btn" id="menuBtn" aria-label="فتح القائمة" aria-expanded="false"><span></span><span></span><span></span></button></div>
+      <div class="header__tools"><button class="icon-btn nds-btn nds-subtle" aria-label="بحث" id="searchBtn"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4 4"></path></svg></button><a class="lang" href="en.html" lang="en" hreflang="en">EN</a><button class="menu-btn" id="menuBtn" aria-label="فتح القائمة" aria-expanded="false"><span></span><span></span><span></span></button></div>
     </div>
   </header>
 
@@ -62,6 +63,19 @@
       </div>
     </section>
 
+    <section class="coverage-disclosure" aria-labelledby="coverageTitle">
+      <div class="container">
+        <div class="coverage-disclosure__head"><div><span>شفافية التغطية</span><h2 id="coverageTitle">حالة بيانات الهدف الأول</h2></div><a href="open-data.html">عرض فهرس البيانات المفتوحة ←</a></div>
+        <div class="coverage-disclosure__grid">
+          <article><strong>13</strong><span>مؤشرًا في الفهرس</span></article>
+          <article><strong>9</strong><span>مؤشرات موثقة</span></article>
+          <article><strong>8</strong><span>مؤشرات بجداول منشورة</span></article>
+          <article><strong>2024</strong><span>أحدث سنة تحديث في النموذج</span></article>
+        </div>
+        <p>تعكس هذه الأرقام حالة النموذج الحالي للهدف الأول، وتظهر المؤشرات غير المتاحة بوضوح في فهرس البيانات بدل احتسابها ضمن التغطية المنشورة.</p>
+      </div>
+    </section>
+
     <section class="goal-section" id="indicators"><div class="container">
       <div class="indicator-layout">
         <aside class="indicator-sidebar" aria-label="التنقل بين مؤشرات الهدف الأول">
@@ -73,7 +87,7 @@
     </div></section>
   </main>
 
-  <footer class="footer nds-footer"><div class="container footer__top"><div><h3>نظرة عامة</h3><a href="index.html#goals">أهداف التنمية المستدامة</a><a href="#indicators">المؤشرات</a><a href="#methodology">المنهجية والمصادر</a></div><div><h3>المساعدة والدعم</h3><a href="#">تواصل معنا</a><a href="#">الأسئلة الشائعة</a></div><div class="footer__marks"><div class="footer__mark"><img src="assets/sdg-wheel-saudi-transparent.png" alt="أهداف التنمية المستدامة"></div><span class="footer__marks-divider"></span><div class="footer__mark footer__mark--vision"><img src="assets/saudi-vision-2030.svg" alt="رؤية السعودية 2030"></div></div></div><div class="container footer__bottom"><span>جميع الحقوق محفوظة للهيئة العامة للإحصاء © 2026</span><div><a href="#">سياسة الخصوصية</a><a href="#">شروط الاستخدام</a></div></div></footer>
+  <footer class="footer nds-footer"><div class="container footer__top"><div><h3>نظرة عامة</h3><a href="index.html#goals">أهداف التنمية المستدامة</a><a href="#indicators">المؤشرات</a><a href="open-data.html">البيانات المفتوحة</a></div><div><h3>المساعدة والدعم</h3><a href="methodology.html">المنهجية</a><a href="governance.html">حوكمة النشر</a></div><div class="footer__marks"><div class="footer__mark"><img src="assets/sdg-wheel-saudi-transparent.png" alt="أهداف التنمية المستدامة"></div><span class="footer__marks-divider"></span><div class="footer__mark footer__mark--vision"><img src="assets/saudi-vision-2030.svg" alt="رؤية السعودية 2030"></div></div></div><div class="container footer__bottom"><span>جميع الحقوق محفوظة للهيئة العامة للإحصاء © 2026</span><div><a href="#">سياسة الخصوصية</a><a href="#">شروط الاستخدام</a></div></div></footer>
 
   <button class="back-to-top" id="backToTop" aria-label="العودة إلى أعلى الصفحة"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 14 6-6 6 6"/></svg></button>
   <div class="search-panel" id="searchPanel" aria-hidden="true"><button id="closeSearch">×</button><div><span>ما الذي تبحث عنه؟</span><input type="search" placeholder="ابحث في الأهداف والمؤشرات..."></div></div>
@@ -82,5 +96,6 @@
   <script src="back-to-top.js"></script>
   <script defer src="https://mazin-musleh.github.io/NDS-vanilla/assets/js/nds-main.min.js?ver=1.8.0"></script>
   <script src="accessibility.js"></script>
+  <script src="preview-banner.js"></script>
 </body>
 </html>
