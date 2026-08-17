@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>لوحة إدارة محتوى أهداف التنمية المستدامة</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+  <link rel="stylesheet" href="accessibility.css">
+</head>
+<body>
+  <header class="admin-header">
+    <div class="header-inner">
+      <div class="brand">
+        <img src="assets/gastat-logo.svg" alt="الهيئة العامة للإحصاء">
+        <span></span>
+        <img class="sdg-logo" src="assets/sdg-wheel-saudi-transparent.png" alt="أهداف التنمية المستدامة">
+      </div>
+      <div class="header-actions">
+        <a class="button secondary" href="goal-1.html" target="_blank">معاينة الصفحة</a>
+        <button class="button primary" id="publishButton" type="button">نشر المحتوى</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <section class="page-heading">
+      <div>
+        <p class="eyebrow">إدارة المحتوى</p>
+        <h1>محرر صفحة الهدف</h1>
+        <p>أدخل المحتوى يدويًا أو استورده من ملف منظم، ثم عاين الصفحة وانشرها.</p>
+      </div>
+      <div class="status-card"><span class="status-dot"></span><div><small>حالة المحتوى</small><strong id="publicationStatus">مسودة محلية</strong></div></div>
+    </section>
+
+    <section class="import-panel">
+      <div>
+        <h2>استيراد سريع</h2>
+        <p>ارفع Excel أو CSV أو JSON. كل ورقة في Excel تُحوّل إلى جدول، ويمكن مراجعة المحتوى قبل النشر.</p>
+      </div>
+      <label class="upload-button">اختيار ملف<input id="fileInput" type="file" accept=".xlsx,.xls,.csv,.json"></label>
+      <p class="import-note">لضمان دقة الأرقام، لا يتم تحويل PDF تلقائيًا. استخدم Excel أو CSV للبيانات.</p>
+    </section>
+
+    <div class="workspace">
+      <aside class="indicator-sidebar">
+        <div class="sidebar-title"><div><small>محتوى الصفحة</small><h2>المؤشرات</h2></div><button class="icon-button" id="addIndicator" title="إضافة مؤشر">＋</button></div>
+        <div id="indicatorList" class="indicator-list"></div>
+      </aside>
+
+      <div class="editor-column">
+        <section class="panel">
+          <div class="panel-heading"><div><small>بيانات الهدف</small><h2>معلومات الصفحة الأساسية</h2></div><button class="text-button" id="toggleGoal" type="button">إخفاء</button></div>
+          <div id="goalFields" class="form-grid">
+            <label><span>رقم الهدف</span><input id="goalNumber" inputmode="numeric"></label>
+            <label class="wide"><span>عنوان الهدف</span><input id="goalTitle"></label>
+            <label class="full"><span>وصف مختصر</span><textarea id="goalDescription" rows="3"></textarea></label>
+            <label class="wide"><span>مصدر المحتوى</span><input id="goalSource"></label>
+            <label><span>آخر تحديث</span><input id="goalUpdated" inputmode="numeric"></label>
+          </div>
+        </section>
+
+        <section class="panel" id="indicatorEditor">
+          <div class="panel-heading">
+            <div><small>تحرير المؤشر</small><h2 id="editorTitle">مؤشر جديد</h2></div>
+            <div class="compact-actions"><button class="text-button" id="duplicateIndicator">نسخ</button><button class="text-button danger" id="deleteIndicator">حذف</button></div>
+          </div>
+          <div class="form-grid">
+            <label><span>رقم المؤشر</span><input id="indicatorCode" dir="ltr"></label>
+            <label><span>رقم الغاية</span><input id="indicatorTarget" dir="ltr"></label>
+            <label class="full"><span>عنوان المؤشر</span><textarea id="indicatorTitle" rows="2"></textarea></label>
+            <label class="full"><span>وصف المؤشر</span><textarea id="indicatorDescription" rows="4"></textarea></label>
+            <label class="wide"><span>مصدر البيانات</span><input id="indicatorSource"></label>
+            <label><span>وحدة القياس</span><input id="indicatorUnit"></label>
+            <label class="wide"><span>مستوى تفصيل البيانات</span><input id="indicatorDetail"></label>
+            <label><span>آخر تحديث</span><input id="indicatorUpdated" inputmode="numeric"></label>
+            <label class="full"><span>طريقة الحساب</span><textarea id="indicatorMethod" rows="3"></textarea></label>
+            <label class="full"><span>ملاحظة</span><textarea id="indicatorNote" rows="2"></textarea></label>
+          </div>
+
+          <div class="tables-heading"><div><small>جداول البيانات</small><h3>الجداول التابعة للمؤشر</h3></div><button class="button secondary small" id="addTable">إضافة جدول</button></div>
+          <div id="tablesEditor"></div>
+        </section>
+
+        <section class="publish-bar">
+          <div><strong>احفظ عملك قبل المغادرة</strong><p>الحفظ كمسودة لا يغيّر الصفحة المنشورة.</p></div>
+          <div class="publish-actions">
+            <button class="button ghost" id="exportJson">تنزيل نسخة احتياطية</button>
+            <button class="button secondary" id="saveDraft">حفظ مسودة</button>
+            <button class="button primary" id="publishBottom">نشر ومعاينة</button>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script src="admin.js"></script>
+  <script src="accessibility.js"></script>
+</body>
+</html>
