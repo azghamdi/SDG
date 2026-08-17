@@ -179,11 +179,22 @@ const catalogueArticles=displayIndicators.filter(indicator=>!detailedCodes.has(i
 publishedContainer.innerHTML=cmsPublication?.indicators?.length?allPublishedIndicators.map(renderOfficialIndicator).join(''):detailedArticles+additionalArticles+catalogueArticles;
 
 const tabLinks=[...indicatorTabs.querySelectorAll('a')];
+tabLinks.forEach((link,index)=>{
+  if(index===0) link.setAttribute('aria-current','true');
+  link.addEventListener('click',()=>{
+    tabLinks.forEach(item=>item.removeAttribute('aria-current'));
+    link.setAttribute('aria-current','true');
+  });
+});
 const indicatorArticles=[...publishedContainer.querySelectorAll('.simple-indicator')];
 const indicatorObserver=new IntersectionObserver(entries=>{
   const visible=entries.filter(entry=>entry.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];
   if(!visible)return;
-  tabLinks.forEach(link=>link.classList.toggle('active',link.hash===`#${visible.target.id}`));
+  tabLinks.forEach(link=>{
+    const active=link.hash===`#${visible.target.id}`;
+    link.classList.toggle('active',active);
+    if(active) link.setAttribute('aria-current','true'); else link.removeAttribute('aria-current');
+  });
   const active=indicatorTabs.querySelector('a.active');
   active?.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
 },{rootMargin:'-24% 0px -60% 0px',threshold:[.05,.25,.5]});
