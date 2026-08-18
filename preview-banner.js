@@ -22,7 +22,7 @@
   if(!document.querySelector('link[href^="header-premium.css"]')){
     const headerStyle=document.createElement('link');
     headerStyle.rel='stylesheet';
-    headerStyle.href='header-premium.css?v=10';
+    headerStyle.href='header-premium.css?v=12';
     document.head.appendChild(headerStyle);
   }
   if(!document.querySelector('link[href^="gov-verification.css"]')){
@@ -57,7 +57,7 @@
       ['governance.html','Publishing governance','governance']
     ];
     const activeKey=file==='about.html'?'about':file==='methodology.html'?'methodology':file==='goal-1.html'?'goals':file==='open-data.html'?'open-data':file==='governance.html'?'governance':'home';
-    mainNav.innerHTML=(isEnglish?englishNav:arabicNav).map(([href,label,key])=>`<a href="${href}"${key===activeKey?' class="active" aria-current="page"':''}>${label}</a>`).join('');
+    mainNav.innerHTML=`<div class="nav__mobile-head"><strong>${isEnglish?'Main navigation':'قائمة التنقل'}</strong><button class="nav__mobile-close" type="button" aria-label="${isEnglish?'Close main menu':'إغلاق القائمة'}"><svg viewBox="0 0 20 20"><path d="m5 5 10 10M15 5 5 15"/></svg></button></div>`+(isEnglish?englishNav:arabicNav).map(([href,label,key])=>`<a href="${href}"${key===activeKey?' class="active" aria-current="page"':''}>${label}</a>`).join('');
     mainNav.setAttribute('aria-label',isEnglish?'Main navigation':'التنقل الرئيسي');
     mainNav.id='mainNavigation';
 
@@ -80,6 +80,7 @@
       };
       menuButton.addEventListener('click',event=>{event.stopPropagation();setMenu(menuButton.getAttribute('aria-expanded')!=='true')});
       mainNav.addEventListener('click',event=>event.stopPropagation());
+      mainNav.querySelector('.nav__mobile-close')?.addEventListener('click',()=>{setMenu(false);menuButton.focus()});
       mainNav.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>setMenu(false)));
       document.addEventListener('click',()=>setMenu(false));
       document.addEventListener('keydown',event=>{if(event.key==='Escape'&&menuButton.getAttribute('aria-expanded')==='true'){setMenu(false);menuButton.focus()}});

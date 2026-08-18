@@ -1,5 +1,6 @@
 /* شريط تنقل رسمي بتركيز بصري واضح على الصفحة النشطة. */
 @media screen and (min-width:761px){
+  .gastat-sdg .nav__mobile-head{display:none!important}
   .gastat-sdg .header{border-bottom:1px solid #dfe7e3!important;box-shadow:0 5px 18px rgba(16,48,36,.045)!important}
   .gastat-sdg .header__inner{gap:24px!important}
   .gastat-sdg .nav{
@@ -141,10 +142,10 @@
   .gastat-sdg .header .menu-btn[aria-expanded="true"] span:nth-child(2){opacity:0}
   .gastat-sdg .header .menu-btn[aria-expanded="true"] span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
   .gastat-sdg .header .nav{
-    position:fixed!important;top:var(--mobile-nav-top,155px)!important;right:0!important;left:0!important;z-index:130!important;
+    position:fixed!important;top:var(--mobile-nav-top,155px)!important;right:auto!important;left:50%!important;z-index:130!important;
     display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:4px!important;
-    width:100%!important;height:auto!important;max-height:calc(100dvh - var(--mobile-nav-top,155px))!important;
-    margin:0!important;padding:14px 18px 22px!important;border:0!important;border-top:1px solid #dfe7e3!important;border-radius:0!important;
+    width:100vw!important;max-width:none!important;height:auto!important;max-height:calc(100dvh - var(--mobile-nav-top,155px))!important;
+    margin:0 0 0 -50vw!important;padding:0 18px 22px!important;border:0!important;border-top:1px solid #dfe7e3!important;border-radius:0!important;
     overflow-y:auto!important;background:#fff!important;box-shadow:0 18px 35px rgba(16,48,36,.16)!important;
     opacity:0!important;visibility:hidden!important;pointer-events:none!important;transform:translateY(-14px)!important;transition:opacity .2s ease,transform .2s ease,visibility .2s ease!important
   }
@@ -152,6 +153,11 @@
     opacity:1!important;visibility:visible!important;pointer-events:auto!important;transform:translateY(0)!important
   }
   body.menu-open .header .nav{opacity:1!important;visibility:visible!important;pointer-events:auto!important;transform:translateY(0)!important}
+  body.menu-open .header>.container .menu-btn,body.menu-open .header .menu-btn{visibility:hidden!important;pointer-events:none!important}
+  .gastat-sdg .header .nav__mobile-head{position:sticky;top:0;z-index:2;display:flex!important;align-items:center;justify-content:space-between;min-height:64px;margin:0 -18px 8px;padding:0 18px;border-bottom:1px solid #e1e7e4;background:#fff;color:#172b3a}
+  .gastat-sdg .header .nav__mobile-head strong{font-size:16px;font-weight:700}
+  .gastat-sdg .header .nav__mobile-close{width:42px;height:42px;display:grid;place-items:center;padding:0;border:1px solid #d8e1dc;border-radius:8px;background:#fff;color:#173f30;cursor:pointer}
+  .gastat-sdg .header .nav__mobile-close svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round}
   .gastat-sdg .header .nav a,.gastat-sdg .header.scrolled .nav a{
     flex:0 0 auto!important;width:100%!important;height:50px!important;min-height:50px!important;
     display:flex!important;align-items:center!important;justify-content:flex-start!important;padding:0 15px!important;
@@ -159,4 +165,48 @@
   }
   .gastat-sdg .header .nav a+a{border-top:1px solid #edf0ee!important}
   .gastat-sdg .header .nav a.active{border:0!important;background:#e7f4ed!important;color:#075d3b!important;font-weight:700!important;box-shadow:inset -3px 0 #1b8354!important}
+}
+
+/* الإصدار الثاني عشر: أدوات اللغة والبحث المتناسقة على الجوال. */
+@media screen and (max-width:760px){
+  .gastat-sdg .header,.gastat-sdg .header.scrolled{height:68px!important;background:#fff!important}
+  .gastat-sdg .header>.container,.gastat-sdg .header__inner.container{width:calc(100% - 24px)!important;max-width:none!important;margin-inline:auto!important}
+  .gastat-sdg .header__inner{height:68px!important;display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;gap:8px!important;align-items:center!important}
+  .gastat-sdg .header__identity{min-width:0!important;gap:8px!important;overflow:hidden!important}
+  .gastat-sdg .header__sdg-mark{width:40px!important;height:40px!important;flex:0 0 40px!important}
+  .gastat-sdg .header__identity-divider{height:34px!important}
+  .gastat-sdg .header__identity .brand{min-width:0!important}
+  .gastat-sdg .header__identity .brand__logo{display:block!important;width:clamp(102px,30vw,135px)!important;height:auto!important;max-height:42px!important;object-fit:contain!important}
+  .gastat-sdg .header__tools{width:auto!important;min-width:0!important;display:flex!important;align-items:center!important;justify-content:flex-end!important;gap:6px!important;margin:0!important;padding:0!important;border:0!important}
+  .gastat-sdg .header__tools .icon-btn,.gastat-sdg .header__tools .nds-btn,.gastat-sdg .header__tools .menu-btn{
+    width:42px!important;height:42px!important;min-width:42px!important;min-height:42px!important;display:grid!important;place-items:center!important;
+    margin:0!important;padding:0!important;border:1px solid #d7e0dc!important;border-radius:8px!important;background:#fff!important;color:#173f30!important;box-shadow:none!important
+  }
+  .gastat-sdg .header__tools .icon-btn svg{width:21px!important;height:21px!important;fill:none!important;stroke:currentColor!important;stroke-width:1.8!important}
+  .gastat-sdg .header__tools .lang{
+    width:auto!important;height:42px!important;min-width:42px!important;display:grid!important;place-items:center!important;
+    margin:0!important;padding:0 9px!important;border:1px solid #d7e0dc!important;border-radius:8px!important;
+    background:#fff!important;color:#075d3b!important;font-size:13px!important;font-weight:700!important;line-height:1!important;text-decoration:none!important
+  }
+  .gastat-sdg .header__tools .lang:hover,.gastat-sdg .header__tools .icon-btn:hover{border-color:#9bc9b1!important;background:#edf7f2!important}
+}
+
+@media screen and (max-width:390px){
+  .gastat-sdg .header>.container,.gastat-sdg .header__inner.container{width:calc(100% - 16px)!important}
+  .gastat-sdg .header__sdg-mark{width:36px!important;height:36px!important;flex-basis:36px!important}
+  .gastat-sdg .header__identity .brand__logo{width:96px!important}
+  .gastat-sdg .header__tools{gap:4px!important}
+  .gastat-sdg .header__tools .icon-btn,.gastat-sdg .header__tools .nds-btn,.gastat-sdg .header__tools .menu-btn{width:39px!important;height:39px!important;min-width:39px!important;min-height:39px!important}
+  .gastat-sdg .header__tools .lang{height:39px!important;min-width:39px!important;padding-inline:7px!important;font-size:12px!important}
+}
+
+@media screen and (max-width:760px){
+  .gastat-sdg .search-panel{position:fixed!important;inset:0!important;z-index:220!important;display:grid!important;place-items:center!important;padding:16px!important;background:rgba(10,31,23,.58)!important;backdrop-filter:blur(5px)!important;opacity:0!important;visibility:hidden!important;pointer-events:none!important;transition:opacity .18s ease,visibility .18s ease!important}
+  .gastat-sdg .search-panel.open{opacity:1!important;visibility:visible!important;pointer-events:auto!important}
+  .gastat-sdg .search-panel>div{width:min(100%,520px)!important;margin:0!important;padding:24px 18px 20px!important;border:1px solid #d8e1dc!important;border-radius:14px!important;background:#fff!important;box-shadow:0 22px 55px rgba(0,0,0,.2)!important}
+  .gastat-sdg .search-panel>button{position:absolute!important;top:18px!important;inset-inline-end:18px!important;width:42px!important;height:42px!important;display:grid!important;place-items:center!important;border:1px solid #d8e1dc!important;border-radius:8px!important;background:#fff!important;color:#173f30!important;font-size:25px!important;line-height:1!important;cursor:pointer!important}
+  .gastat-sdg .search-panel span{display:block!important;margin-bottom:10px!important;color:#172b3a!important;font-size:16px!important;font-weight:700!important}
+  .gastat-sdg .search-panel input{width:100%!important;height:50px!important;padding:0 14px!important;border:1px solid #bfcac5!important;border-radius:8px!important;background:#fff!important;color:#172b3a!important;font:400 16px "IBM Plex Sans Arabic",Arial,sans-serif!important;outline:none!important}
+  .gastat-sdg .search-panel input:focus{border-color:#1b8354!important;box-shadow:0 0 0 3px rgba(27,131,84,.12)!important}
+  .gastat-sdg .search-panel small{display:block!important;margin-top:9px!important;color:#667085!important;font-size:11px!important;line-height:1.6!important}
 }
