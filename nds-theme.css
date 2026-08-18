@@ -864,3 +864,56 @@ html{scroll-behavior:smooth}
 }
 .gastat-sdg .goal:hover .goal__action i{background:color-mix(in srgb,var(--goal) 17%,#fff)}
 .gastat-sdg .goal:focus-visible{outline-color:var(--goal)}
+
+/* Full-colour SDG cards — official goal colour with white content. */
+.gastat-sdg .goal{
+  background:var(--goal)!important;
+  border:1px solid color-mix(in srgb,var(--goal) 82%,#000)!important;
+  border-top-color:color-mix(in srgb,var(--goal) 82%,#000)!important;
+  color:#fff!important;
+  box-shadow:0 5px 14px rgba(16,24,40,.12)!important;
+  isolation:isolate;
+}
+.gastat-sdg .goal:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  background:linear-gradient(145deg,rgba(255,255,255,.09),transparent 48%,rgba(0,0,0,.08));
+}
+.gastat-sdg .goal:after{display:none!important}
+.gastat-sdg .goal strong,
+.gastat-sdg .goal__number,
+.gastat-sdg .goal__action,
+.gastat-sdg .goal__action i,
+.gastat-sdg .goal__icon,
+.gastat-sdg .goal__icon span,
+.gastat-sdg .goal__icon svg{
+  color:#fff!important;
+}
+.gastat-sdg .goal__icon{
+  background:rgba(255,255,255,.13)!important;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.34)!important;
+}
+.gastat-sdg .goal__icon svg{stroke:#fff!important}
+.gastat-sdg .goal__action{
+  border-top:1px solid rgba(255,255,255,.24)!important;
+  background:transparent!important;
+}
+.gastat-sdg .goal__action i{
+  background:rgba(255,255,255,.16)!important;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.25)!important;
+}
+.gastat-sdg .goal:hover{
+  transform:translateY(-4px)!important;
+  border-color:color-mix(in srgb,var(--goal) 74%,#000)!important;
+  box-shadow:0 12px 25px rgba(16,24,40,.18)!important;
+  filter:saturate(1.04) brightness(.98);
+}
+.gastat-sdg .goal:hover .goal__icon{
+  background:rgba(255,255,255,.19)!important;
+  transform:scale(1.035);
+}
+.gastat-sdg .goal:hover .goal__action i{background:rgba(255,255,255,.22)!important}
+.gastat-sdg .goal:focus-visible{outline:3px solid #fff!important;outline-offset:-5px!important}
