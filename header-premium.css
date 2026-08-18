@@ -66,3 +66,12 @@
   .gastat-sdg .nav a,.gastat-sdg .scrolled .nav a{padding-inline:9px!important;font-size:11px!important}
   .gastat-sdg .nav a.active{padding-inline:11px!important}
 }
+
+@media screen and (min-width:1451px){
+  .gastat-sdg .nav{height:56px!important;gap:3px!important;padding:5px!important;border-radius:13px!important}
+  .gastat-sdg .nav a,.gastat-sdg .scrolled .nav a{height:44px!important;min-height:44px!important;padding-inline:18px!important;border-radius:9px!important;font-size:14px!important;font-weight:500!important}
+  .gastat-sdg .nav a.active{padding-inline:20px!important;font-size:14px!important;font-weight:700!important}
+  .gastat-sdg .nav a.active:before{width:5px;height:5px;margin-inline-end:7px}
+  .gastat-sdg .header__tools .icon-btn{width:44px!important;height:44px!important;border-radius:9px!important}
+  .gastat-sdg .header__tools .lang{font-size:14px!important}
+}
