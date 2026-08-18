@@ -1,3 +1,15 @@
+// حمّل إشعار النسخة التجريبية والفوتر الموحّد قبل وظائف الصفحة الرئيسية.
+if(!document.querySelector('link[href="preview-banner.css"]')){
+  const previewStyle=document.createElement('link');
+  previewStyle.rel='stylesheet';previewStyle.href='preview-banner.css';
+  document.head.appendChild(previewStyle);
+}
+if(!document.querySelector('script[src="preview-banner.js"]')){
+  const previewScript=document.createElement('script');
+  previewScript.src='preview-banner.js';
+  document.body.appendChild(previewScript);
+}
+
 const goals = [
   ['القضاء على الفقر','#E5243B','⌂'],['القضاء التام على الجوع','#DDA63A','♨'],['الصحة الجيدة والرفاه','#4C9F38','♡'],['التعليم الجيد','#C5192D','▤'],['المساواة بين الجنسين','#FF3A21','⚥'],['المياه النظيفة والنظافة الصحية','#26BDE2','≋'],['طاقة نظيفة وبأسعار معقولة','#FCC30B','☀'],['العمل اللائق ونمو الاقتصاد','#A21942','↗'],['الصناعة والابتكار والهياكل الأساسية','#FD6925','⬡'],['الحد من أوجه عدم المساواة','#DD1367','⇄'],['مدن ومجتمعات محلية مستدامة','#FD9D24','▥'],['الاستهلاك والإنتاج المسؤولان','#BF8B2E','∞'],['العمل المناخي','#3F7E44','◒'],['الحياة تحت الماء','#0A97D9','≈'],['الحياة في البر','#56C02B','♧'],['السلام والعدل والمؤسسات القوية','#00689D','⚖'],['عقد الشراكات لتحقيق الأهداف','#19486A','◎']
 ];
@@ -58,15 +70,3 @@ document.querySelectorAll('.reveal,.goal').forEach(el=>revealObserver.observe(el
 
 document.querySelectorAll('form').forEach(f=>f.addEventListener('submit',e=>e.preventDefault()));
 document.querySelectorAll('.goal[href="#"]').forEach(goal=>goal.addEventListener('click',e=>e.preventDefault()));
-
-// Shared prototype notice for every public platform page that loads this script.
-if(!document.querySelector('link[href="preview-banner.css"]')){
-  const previewStyle=document.createElement('link');
-  previewStyle.rel='stylesheet';previewStyle.href='preview-banner.css';
-  document.head.append(previewStyle);
-}
-if(!document.querySelector('script[src="preview-banner.js"]')){
-  const previewScript=document.createElement('script');
-  previewScript.src='preview-banner.js';
-  document.body.append(previewScript);
-}
