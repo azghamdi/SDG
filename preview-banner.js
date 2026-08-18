@@ -22,7 +22,7 @@
   if(!document.querySelector('link[href^="header-premium.css"]')){
     const headerStyle=document.createElement('link');
     headerStyle.rel='stylesheet';
-    headerStyle.href='header-premium.css?v=6';
+    headerStyle.href='header-premium.css?v=7';
     document.head.appendChild(headerStyle);
   }
   if(!document.querySelector('link[href^="gov-verification.css"]')){
