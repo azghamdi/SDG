@@ -31,6 +31,101 @@
   .gastat-sdg .nav a.active:hover{color:#fff!important;background:linear-gradient(135deg,#187a4e,#0f603d)!important}
 }
 
+/* Compact branded search popover — keeps the page visible */
+.gastat-sdg .search-panel{
+  position:fixed!important;
+  inset:auto!important;
+  top:clamp(128px,12vw,174px)!important;
+  left:50%!important;
+  z-index:220!important;
+  width:min(560px,calc(100vw - 32px))!important;
+  display:block!important;
+  padding:0!important;
+  background:transparent!important;
+  backdrop-filter:none!important;
+  opacity:0!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+  transform:translate(-50%,-10px)!important;
+  transition:opacity .18s ease,transform .18s ease,visibility .18s ease!important;
+}
+.gastat-sdg .search-panel.open{
+  opacity:1!important;
+  visibility:visible!important;
+  pointer-events:auto!important;
+  transform:translate(-50%,0)!important;
+}
+.gastat-sdg .search-panel>div{
+  width:100%!important;
+  margin:0!important;
+  padding:22px!important;
+  border:1px solid #b7d8c9!important;
+  border-top:4px solid #1b8354!important;
+  border-radius:14px!important;
+  background:#fff!important;
+  box-shadow:0 18px 45px rgba(17,52,39,.18)!important;
+}
+.gastat-sdg .search-panel>button{
+  position:absolute!important;
+  top:14px!important;
+  inset-inline-end:14px!important;
+  width:34px!important;
+  height:34px!important;
+  display:grid!important;
+  place-items:center!important;
+  z-index:2!important;
+  border:1px solid #d4e4dc!important;
+  border-radius:8px!important;
+  background:#f4faf7!important;
+  color:#145c3d!important;
+  font-size:22px!important;
+  line-height:1!important;
+  cursor:pointer!important;
+}
+.gastat-sdg .search-panel>button:hover{background:#e7f5ee!important}
+.gastat-sdg .search-panel span{
+  display:block!important;
+  margin:0 0 12px!important;
+  padding-inline-end:44px!important;
+  color:#173f30!important;
+  font-size:18px!important;
+  font-weight:700!important;
+}
+.gastat-sdg .search-panel input{
+  width:100%!important;
+  height:52px!important;
+  padding:0 46px 0 14px!important;
+  border:1px solid #aebdb6!important;
+  border-radius:9px!important;
+  background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='21' viewBox='0 0 24 24' fill='none' stroke='%231b8354' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m20 20-3.5-3.5'/%3E%3C/svg%3E") no-repeat right 14px center!important;
+  color:#172b3a!important;
+  font:400 16px "IBM Plex Sans Arabic",Arial,sans-serif!important;
+  outline:none!important;
+}
+.gastat-sdg .search-panel input:focus{
+  border-color:#1b8354!important;
+  box-shadow:0 0 0 3px rgba(27,131,84,.12)!important;
+}
+.gastat-sdg .search-panel small{
+  display:block!important;
+  margin-top:11px!important;
+  padding:9px 11px!important;
+  border-radius:8px!important;
+  background:#f2f8f5!important;
+  color:#53675e!important;
+  font-size:12px!important;
+  line-height:1.7!important;
+}
+@media(max-width:760px){
+  .gastat-sdg .search-panel{
+    top:calc(var(--mobile-nav-top,132px) + 8px)!important;
+    width:calc(100vw - 24px)!important;
+  }
+  .gastat-sdg .search-panel>div{padding:18px 16px 16px!important}
+  .gastat-sdg .search-panel span{font-size:16px!important}
+  .gastat-sdg .search-panel input{height:48px!important;font-size:15px!important}
+}
+
 @media screen and (min-width:761px) and (max-width:1120px){
   .gastat-sdg .header__inner{gap:12px!important}
   .gastat-sdg .nav{gap:2px!important;padding:4px!important}
