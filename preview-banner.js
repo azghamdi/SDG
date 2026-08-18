@@ -33,6 +33,34 @@
   }
 
   const isEnglish=document.documentElement.lang==='en';
+  const mainNav=document.querySelector('.header .nav');
+  if(mainNav){
+    const file=(location.pathname.split('/').pop()||'index.html').toLowerCase();
+    const arabicNav=[
+      ['index.html','الرئيسية','home'],
+      ['about.html','نبذة','about'],
+      ['methodology.html','المنهجية','methodology'],
+      ['index.html#goals','الأهداف','goals'],
+      ['index.html#kingdom','المملكة والاستدامة','kingdom'],
+      ['index.html#partners','شركاء البيانات','partners'],
+      ['open-data.html','البيانات المفتوحة','open-data'],
+      ['governance.html','حوكمة النشر','governance']
+    ];
+    const englishNav=[
+      ['en.html','Home','home'],
+      ['en.html#about','About','about'],
+      ['methodology.html','Methodology','methodology'],
+      ['en.html#goals','Goals','goals'],
+      ['index.html#kingdom','Saudi Arabia & sustainability','kingdom'],
+      ['index.html#partners','Data partners','partners'],
+      ['open-data.html','Open data','open-data'],
+      ['governance.html','Publishing governance','governance']
+    ];
+    const activeKey=file==='about.html'?'about':file==='methodology.html'?'methodology':file==='goal-1.html'?'goals':file==='open-data.html'?'open-data':file==='governance.html'?'governance':'home';
+    mainNav.innerHTML=(isEnglish?englishNav:arabicNav).map(([href,label,key])=>`<a href="${href}"${key===activeKey?' class="active" aria-current="page"':''}>${label}</a>`).join('');
+    mainNav.setAttribute('aria-label',isEnglish?'Main navigation':'التنقل الرئيسي');
+    mainNav.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>document.body.classList.remove('menu-open')));
+  }
   const govbar=document.querySelector('.govbar');
   if(govbar){
     govbar.classList.add('gov-verification');
