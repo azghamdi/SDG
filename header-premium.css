@@ -99,6 +99,9 @@
     padding:0 clamp(15px,.9vw,20px)!important;color:#075d3b!important;background:#e5f4ec!important;
     font-size:clamp(13px,.7vw,15px)!important;font-weight:700!important;box-shadow:inset 0 0 0 1px rgba(27,131,84,.12)!important
   }
+  .gastat-sdg .nav__label{height:34px;display:inline-flex;align-items:center;gap:7px;margin-inline-end:7px;padding-inline-end:14px;border-inline-end:1px solid #d8e2dd;color:#52645b;white-space:nowrap}
+  .gastat-sdg .nav__label svg{width:18px;height:18px;fill:none;stroke:#1b8354;stroke-width:1.8;stroke-linecap:round}
+  .gastat-sdg .nav__label b{font-size:12px;font-weight:600}
   .gastat-sdg .header__tools .icon-btn,.gastat-sdg .header__tools .nds-btn{
     width:46px!important;height:46px!important;min-width:46px!important;min-height:46px!important;padding:0!important;border-radius:8px!important
   }
@@ -109,4 +112,51 @@
   .gastat-sdg .nav{gap:1px!important}
   .gastat-sdg .nav a,.gastat-sdg .scrolled .nav a{padding-inline:8px!important;font-size:12px!important}
   .gastat-sdg .nav a.active{padding-inline:10px!important;font-size:12px!important}
+  .gastat-sdg .nav__label{margin-inline-end:3px;padding-inline-end:8px}
+  .gastat-sdg .nav__label b{display:none}
+}
+
+@media screen and (max-width:760px){
+  .gastat-sdg .nav__label{display:flex;align-items:center;gap:8px;padding:8px 12px 12px;margin-bottom:4px;border-bottom:1px solid #e4e9e6;color:#52645b}
+  .gastat-sdg .nav__label svg{width:19px;height:19px;fill:none;stroke:#1b8354;stroke-width:1.8;stroke-linecap:round}
+  .gastat-sdg .nav__label b{font-size:13px;font-weight:600}
+}
+
+/* الإصدار التاسع: توضيح القائمة بصريًا دون عنوان إضافي. */
+@media screen and (min-width:761px){
+  .gastat-sdg .nav__label{display:none!important}
+  .gastat-sdg .nav a+a{border-inline-start:1px solid #e2e8e5!important}
+  .gastat-sdg .nav a.active{border-inline-start-color:transparent!important}
+  .gastat-sdg .nav a.active+a{border-inline-start-color:transparent!important}
+  .gastat-sdg .nav a:hover{border-inline-start-color:transparent!important}
+  .gastat-sdg .nav a:hover+a{border-inline-start-color:transparent!important}
+}
+
+/* الإصدار العاشر: تشغيل موحد وآمن لقائمة الجوال. */
+@media screen and (max-width:760px){
+  body.mobile-nav-locked{overflow:hidden!important;touch-action:none}
+  .gastat-sdg .header .menu-btn{position:relative;z-index:132;display:block!important;width:46px;height:46px;padding:10px!important;border:1px solid #d8e1dc!important;border-radius:8px!important;background:#fff!important;cursor:pointer!important}
+  .gastat-sdg .header .menu-btn span{display:block!important;width:23px!important;height:2px!important;margin:4px auto!important;border-radius:2px!important;background:#173f30!important;transition:transform .18s ease,opacity .18s ease!important}
+  .gastat-sdg .header .menu-btn[aria-expanded="true"] span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+  .gastat-sdg .header .menu-btn[aria-expanded="true"] span:nth-child(2){opacity:0}
+  .gastat-sdg .header .menu-btn[aria-expanded="true"] span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+  .gastat-sdg .header .nav{
+    position:fixed!important;top:var(--mobile-nav-top,155px)!important;right:0!important;left:0!important;z-index:130!important;
+    display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:4px!important;
+    width:100%!important;height:auto!important;max-height:calc(100dvh - var(--mobile-nav-top,155px))!important;
+    margin:0!important;padding:14px 18px 22px!important;border:0!important;border-top:1px solid #dfe7e3!important;border-radius:0!important;
+    overflow-y:auto!important;background:#fff!important;box-shadow:0 18px 35px rgba(16,48,36,.16)!important;
+    opacity:0!important;visibility:hidden!important;pointer-events:none!important;transform:translateY(-14px)!important;transition:opacity .2s ease,transform .2s ease,visibility .2s ease!important
+  }
+  .gastat-sdg.menu-open .header .nav,.menu-open.gastat-sdg .header .nav,.gastat-sdg .menu-open .header .nav,body.menu-open.gastat-sdg .header .nav{
+    opacity:1!important;visibility:visible!important;pointer-events:auto!important;transform:translateY(0)!important
+  }
+  body.menu-open .header .nav{opacity:1!important;visibility:visible!important;pointer-events:auto!important;transform:translateY(0)!important}
+  .gastat-sdg .header .nav a,.gastat-sdg .header.scrolled .nav a{
+    flex:0 0 auto!important;width:100%!important;height:50px!important;min-height:50px!important;
+    display:flex!important;align-items:center!important;justify-content:flex-start!important;padding:0 15px!important;
+    border:0!important;border-radius:8px!important;background:#fff!important;color:#344054!important;font-size:15px!important;font-weight:500!important;text-align:start!important
+  }
+  .gastat-sdg .header .nav a+a{border-top:1px solid #edf0ee!important}
+  .gastat-sdg .header .nav a.active{border:0!important;background:#e7f4ed!important;color:#075d3b!important;font-weight:700!important;box-shadow:inset -3px 0 #1b8354!important}
 }

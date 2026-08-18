@@ -22,7 +22,7 @@
   if(!document.querySelector('link[href^="header-premium.css"]')){
     const headerStyle=document.createElement('link');
     headerStyle.rel='stylesheet';
-    headerStyle.href='header-premium.css?v=7';
+    headerStyle.href='header-premium.css?v=10';
     document.head.appendChild(headerStyle);
   }
   if(!document.querySelector('link[href^="gov-verification.css"]')){
@@ -59,7 +59,32 @@
     const activeKey=file==='about.html'?'about':file==='methodology.html'?'methodology':file==='goal-1.html'?'goals':file==='open-data.html'?'open-data':file==='governance.html'?'governance':'home';
     mainNav.innerHTML=(isEnglish?englishNav:arabicNav).map(([href,label,key])=>`<a href="${href}"${key===activeKey?' class="active" aria-current="page"':''}>${label}</a>`).join('');
     mainNav.setAttribute('aria-label',isEnglish?'Main navigation':'التنقل الرئيسي');
-    mainNav.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>document.body.classList.remove('menu-open')));
+    mainNav.id='mainNavigation';
+
+    const originalMenuButton=document.querySelector('.header .menu-btn');
+    if(originalMenuButton){
+      const menuButton=originalMenuButton.cloneNode(true);
+      originalMenuButton.replaceWith(menuButton);
+      menuButton.setAttribute('aria-controls','mainNavigation');
+      menuButton.setAttribute('aria-expanded','false');
+      menuButton.setAttribute('aria-label',isEnglish?'Open main menu':'فتح القائمة الرئيسية');
+      const header=document.querySelector('.header');
+      const setMenu=open=>{
+        if(innerWidth>760) open=false;
+        const headerBottom=Math.max(0,Math.round(header.getBoundingClientRect().bottom));
+        document.documentElement.style.setProperty('--mobile-nav-top',`${headerBottom}px`);
+        document.body.classList.toggle('menu-open',open);
+        document.body.classList.toggle('mobile-nav-locked',open);
+        menuButton.setAttribute('aria-expanded',String(open));
+        menuButton.setAttribute('aria-label',open?(isEnglish?'Close main menu':'إغلاق القائمة الرئيسية'):(isEnglish?'Open main menu':'فتح القائمة الرئيسية'));
+      };
+      menuButton.addEventListener('click',event=>{event.stopPropagation();setMenu(menuButton.getAttribute('aria-expanded')!=='true')});
+      mainNav.addEventListener('click',event=>event.stopPropagation());
+      mainNav.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>setMenu(false)));
+      document.addEventListener('click',()=>setMenu(false));
+      document.addEventListener('keydown',event=>{if(event.key==='Escape'&&menuButton.getAttribute('aria-expanded')==='true'){setMenu(false);menuButton.focus()}});
+      addEventListener('resize',()=>{if(innerWidth>760)setMenu(false)},{passive:true});
+    }
   }
   const govbar=document.querySelector('.govbar');
   if(govbar){
