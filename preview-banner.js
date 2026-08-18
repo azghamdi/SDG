@@ -19,6 +19,12 @@
     footerStyle.href='report-footer.css';
     document.head.appendChild(footerStyle);
   }
+  if(!document.querySelector('link[href^="header-premium.css"]')){
+    const headerStyle=document.createElement('link');
+    headerStyle.rel='stylesheet';
+    headerStyle.href='header-premium.css?v=2';
+    document.head.appendChild(headerStyle);
+  }
 
   const isEnglish=document.documentElement.lang==='en';
   let footer=document.querySelector('footer');
