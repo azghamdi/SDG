@@ -25,8 +25,46 @@
     headerStyle.href='header-premium.css?v=2';
     document.head.appendChild(headerStyle);
   }
+  if(!document.querySelector('link[href^="gov-verification.css"]')){
+    const govStyle=document.createElement('link');
+    govStyle.rel='stylesheet';
+    govStyle.href='gov-verification.css?v=1';
+    document.head.appendChild(govStyle);
+  }
 
   const isEnglish=document.documentElement.lang==='en';
+  const govbar=document.querySelector('.govbar');
+  if(govbar){
+    govbar.classList.add('gov-verification');
+    govbar.innerHTML=`<div class="container gov-verification__bar">
+      <div class="gov-verification__label">
+        <span class="gov-verification__state" aria-hidden="true"><i></i></span>
+        <span>${isEnglish?'Official government website of the Kingdom of Saudi Arabia':'موقع حكومي رسمي تابع لحكومة المملكة العربية السعودية'}</span>
+      </div>
+      <button class="gov-verification__toggle" type="button" aria-expanded="false" aria-controls="govVerificationPanel">
+        <span>${isEnglish?'How to verify':'كيف تتحقق؟'}</span>
+        <svg viewBox="0 0 20 20" aria-hidden="true"><path d="m6 8 4 4 4-4"/></svg>
+      </button>
+    </div>
+    <div class="gov-verification__panel" id="govVerificationPanel" hidden>
+      <div class="container gov-verification__content">
+        <article><span class="gov-verification__icon" aria-hidden="true">.sa</span><div><b>${isEnglish?'Government domain':'النطاق الحكومي'}</b><p>${isEnglish?'Official Saudi government websites use domains ending in gov.sa.':'المواقع الحكومية الرسمية في المملكة العربية السعودية تنتهي بالنطاق gov.sa'}</p></div></article>
+        <article><span class="gov-verification__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></span><div><b>${isEnglish?'Secure connection':'اتصال آمن'}</b><p>${isEnglish?'The lock symbol and HTTPS indicate that the connection is encrypted and secure.':'رمز القفل ووجود HTTPS يعنيان أن الاتصال بالموقع مشفّر وآمن.'}</p></div></article>
+      </div>
+    </div>`;
+    const govToggle=govbar.querySelector('.gov-verification__toggle');
+    const govPanel=govbar.querySelector('.gov-verification__panel');
+    const setGovPanel=open=>{
+      govToggle.setAttribute('aria-expanded',String(open));
+      govPanel.hidden=!open;
+      govbar.classList.toggle('is-open',open);
+    };
+    govToggle.addEventListener('click',event=>{event.stopPropagation();setGovPanel(govToggle.getAttribute('aria-expanded')!=='true')});
+    govPanel.addEventListener('click',event=>event.stopPropagation());
+    document.addEventListener('click',()=>setGovPanel(false));
+    document.addEventListener('keydown',event=>{if(event.key==='Escape'){setGovPanel(false);govToggle.focus()}});
+  }
+
   let footer=document.querySelector('footer');
   if(!footer){
     footer=document.createElement('footer');
