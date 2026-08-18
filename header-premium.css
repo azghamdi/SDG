@@ -44,3 +44,25 @@
   .gastat-sdg .nav a.active{color:#fff!important;background:#1b8354!important;font-weight:700!important;box-shadow:0 4px 12px rgba(27,131,84,.18)!important}
   .gastat-sdg .nav a:after{display:none!important}
 }
+
+/* موازنة القائمة بعد توحيد عناصرها الثمانية. */
+@media screen and (min-width:1121px){
+  .gastat-sdg .header>.container,.gastat-sdg .header__inner.container{width:calc(100% - 48px)!important;max-width:1880px!important;margin-inline:auto!important}
+  .gastat-sdg .header__inner{display:grid!important;grid-template-columns:minmax(270px,330px) minmax(0,1fr) 116px!important;gap:22px!important}
+  .gastat-sdg .header__identity{min-width:0!important}
+  .gastat-sdg .header__tools{width:116px!important;min-width:116px!important;justify-content:flex-end!important;margin:0!important;padding-inline-start:14px!important}
+  .gastat-sdg .nav{height:50px!important;gap:2px!important;padding:4px!important;border-radius:12px!important;box-shadow:0 5px 16px rgba(16,48,36,.045),inset 0 1px 0 #fff!important}
+  .gastat-sdg .nav a,.gastat-sdg .scrolled .nav a{height:40px!important;min-height:40px!important;padding-inline:13px!important;border-radius:8px!important;font-size:12px!important}
+  .gastat-sdg .nav a.active{padding-inline:15px!important;box-shadow:0 4px 10px rgba(27,131,84,.18),inset 0 1px 0 rgba(255,255,255,.18)!important}
+  .gastat-sdg .nav a.active:before{width:4px;height:4px;margin-inline-end:6px;box-shadow:0 0 0 2px rgba(255,255,255,.12)}
+}
+
+@media screen and (min-width:1121px) and (max-width:1450px){
+  .gastat-sdg .header>.container,.gastat-sdg .header__inner.container{width:calc(100% - 32px)!important}
+  .gastat-sdg .header__inner{grid-template-columns:225px minmax(0,1fr) 96px!important;gap:8px!important}
+  .gastat-sdg .header__identity .brand__logo{width:164px!important}
+  .gastat-sdg .header__sdg-mark{width:48px!important;height:48px!important}
+  .gastat-sdg .header__tools{width:96px!important;min-width:96px!important;padding-inline-start:6px!important}
+  .gastat-sdg .nav a,.gastat-sdg .scrolled .nav a{padding-inline:9px!important;font-size:11px!important}
+  .gastat-sdg .nav a.active{padding-inline:11px!important}
+}
