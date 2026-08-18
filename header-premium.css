@@ -31,6 +31,12 @@
   .gastat-sdg .nav a.active:hover{color:#fff!important;background:linear-gradient(135deg,#187a4e,#0f603d)!important}
 }
 
+/* Brand order: GASTAT on the right, SDG colour wheel on its left (RTL). */
+html[dir="rtl"] .gastat-sdg .header__identity .brand{order:1!important}
+html[dir="rtl"] .gastat-sdg .header__identity-divider{order:2!important}
+html[dir="rtl"] .gastat-sdg .header__identity .header__sdg-mark{order:3!important}
+.gastat-sdg .header__sdg-mark{object-fit:contain!important}
+
 /* Compact branded search popover — keeps the page visible */
 .gastat-sdg .search-panel{
   position:fixed!important;

@@ -8,7 +8,7 @@
       <span class="prototype-banner__separator" aria-hidden="true"></span>
       <strong>غير جاهزة للنشر</strong>
       <span class="prototype-banner__separator" aria-hidden="true"></span>
-      <span>إعداد <b>إدارة التسويق والتوعية</b></span>
+      <span>إعداد <b>الاتصال الاستراتيجي</b></span>
     </div>`;
     document.body.prepend(banner);
   }
@@ -22,7 +22,7 @@
   if(!document.querySelector('link[href^="header-premium.css"]')){
     const headerStyle=document.createElement('link');
     headerStyle.rel='stylesheet';
-    headerStyle.href='header-premium.css?v=13';
+    headerStyle.href='header-premium.css?v=14';
     document.head.appendChild(headerStyle);
   }
   if(!document.querySelector('link[href^="gov-verification.css"]')){
@@ -33,6 +33,10 @@
   }
 
   const isEnglish=document.documentElement.lang==='en';
+  document.querySelectorAll('.header__sdg-mark').forEach(mark=>{
+    mark.src='assets/sdg-color-wheel.svg';
+    mark.alt=isEnglish?'Sustainable Development Goals colours':'ألوان أهداف التنمية المستدامة';
+  });
   const mainNav=document.querySelector('.header .nav');
   if(mainNav){
     const file=(location.pathname.split('/').pop()||'index.html').toLowerCase();
@@ -127,11 +131,11 @@
   footer.className='site-report-footer';
   footer.innerHTML=`<div class="site-report-footer__inner">
     <div class="site-report-footer__logos">
-      <img src="assets/sdg-wheel-saudi-transparent.png" alt="${isEnglish?'Sustainable Development Goals':'أهداف التنمية المستدامة'}">
+      <img src="assets/sdg-color-wheel.svg" alt="${isEnglish?'Sustainable Development Goals colours':'ألوان أهداف التنمية المستدامة'}">
       <i aria-hidden="true"></i>
       <img src="assets/saudi-vision-2030.svg" alt="${isEnglish?'Saudi Vision 2030':'رؤية السعودية 2030'}">
     </div>
-    <p>${isEnglish?'<b>Prepared by Marketing and Awareness Department</b><br>© 2026 General Authority for Statistics. All rights reserved.<br>Sustainable Development Goals Platform':'<b>إعداد إدارة التسويق والتوعية</b><br>جميع الحقوق محفوظة للهيئة العامة للإحصاء © 2026<br>منصة أهداف التنمية المستدامة'}</p>
+    <p>${isEnglish?'<b>Prepared by Strategic Communication</b><br>© 2026 General Authority for Statistics. All rights reserved.<br>Sustainable Development Goals Platform':'<b>إعداد الاتصال الاستراتيجي</b><br>جميع الحقوق محفوظة للهيئة العامة للإحصاء © 2026<br>منصة أهداف التنمية المستدامة'}</p>
   </div>
   <div class="site-report-footer__bottom">
     <nav aria-label="${isEnglish?'Footer links':'روابط الفوتر'}">

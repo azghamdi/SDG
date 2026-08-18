@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="ألوان أهداف التنمية المستدامة">
+  <g fill="none" stroke-width="22" stroke-linecap="butt" transform="rotate(-90 60 60)">
+    <circle cx="60" cy="60" r="42" stroke="#E5243B" stroke-dasharray="16.1 247.8" transform="rotate(0 60 60)"/>
+    <circle cx="60" cy="60" r="42" stroke="#DDA63A" stroke-dasharray="16.1 247.8" transform="rotate(21.176 60 60)"/>
+    <circle cx="60" cy="60" r="42" stroke="#4C9F38" stroke-dasharray="16.1 247.8" transform="rotate(42.352 60 60)"/>
+    <circle cx="60" cy="60" r="42" stroke="#C5192D" stroke-dasharray="16.1 247.8" transform="rotate(63.528 60 60)"/>
+    <circle cx="60" cy="60" r="42" stroke="#FF3A21" stroke-dasharray="16.1 247.8" transform="rotate(84.704 60 60)"/>
+    <circle cx="60" cy="60" r="42" stroke="#26BDE2" stroke-dasharray="16.1 247.8" transform="rotate(105.88 60 60)"/>
+    <circle cx="60" cy="60" r="42" stroke="#FCC30B" stroke-dasharray="16.1 247.8" transform="rotate(127.056 60 60)"/>
+    <circle cx="60" cy="60" r="42" stroke="#A21942" stroke-dasharray="16.1 247.8" transform="rotate(148.232 60 60)"/>
+    <circle cx="60" cy="60" r="42" stroke="#FD6925" stroke-dasharray="16.1 247.8" transform="rotate(169.408 60 60)"/>
+    <circle cx="60" cy="60" r="42" stroke="#DD1367" stroke-dasharray="16.1 247.8" transform="rotate(190.584 60 60)"/>
+    <circle cx="60" cy="60" r="42" stroke="#FD9D24" stroke-dasharray="16.1 247.8" transform="rotate(211.76 60 60)"/>
+    <circle cx="60" cy="60" r="42" stroke="#BF8B2E" stroke-dasharray="16.1 247.8" transform="rotate(232.936 60 60)"/>
+    <circle cx="60" cy="60" r="42" stroke="#3F7E44" stroke-dasharray="16.1 247.8" transform="rotate(254.112 60 60)"/>
+    <circle cx="60" cy="60" r="42" stroke="#0A97D9" stroke-dasharray="16.1 247.8" transform="rotate(275.288 60 60)"/>
+    <circle cx="60" cy="60" r="42" stroke="#56C02B" stroke-dasharray="16.1 247.8" transform="rotate(296.464 60 60)"/>
+    <circle cx="60" cy="60" r="42" stroke="#00689D" stroke-dasharray="16.1 247.8" transform="rotate(317.64 60 60)"/>
+    <circle cx="60" cy="60" r="42" stroke="#19486A" stroke-dasharray="16.1 247.8" transform="rotate(338.816 60 60)"/>
+  </g>
+</svg>
