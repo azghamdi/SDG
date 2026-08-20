@@ -45,22 +45,16 @@
       ['about.html','نبذة','about'],
       ['methodology.html','المنهجية','methodology'],
       ['index.html#goals','الأهداف','goals'],
-      ['index.html#kingdom','المملكة والاستدامة','kingdom'],
       ['index.html#partners','شركاء البيانات','partners'],
-      ['open-data.html','البيانات المفتوحة','open-data'],
-      ['governance.html','حوكمة النشر','governance']
     ];
     const englishNav=[
       ['en.html','Home','home'],
       ['en.html#about','About','about'],
       ['methodology.html','Methodology','methodology'],
       ['en.html#goals','Goals','goals'],
-      ['index.html#kingdom','Saudi Arabia & sustainability','kingdom'],
       ['index.html#partners','Data partners','partners'],
-      ['open-data.html','Open data','open-data'],
-      ['governance.html','Publishing governance','governance']
     ];
-    const activeKey=file==='about.html'?'about':file==='methodology.html'?'methodology':file==='goal-1.html'?'goals':file==='open-data.html'?'open-data':file==='governance.html'?'governance':'home';
+    const activeKey=file==='about.html'?'about':file==='methodology.html'?'methodology':file==='goal-1.html'?'goals':'home';
     mainNav.innerHTML=`<div class="nav__mobile-head"><strong>${isEnglish?'Main navigation':'قائمة التنقل'}</strong><button class="nav__mobile-close" type="button" aria-label="${isEnglish?'Close main menu':'إغلاق القائمة'}"><svg viewBox="0 0 20 20"><path d="m5 5 10 10M15 5 5 15"/></svg></button></div>`+(isEnglish?englishNav:arabicNav).map(([href,label,key])=>`<a href="${href}"${key===activeKey?' class="active" aria-current="page"':''}>${label}</a>`).join('');
     mainNav.setAttribute('aria-label',isEnglish?'Main navigation':'التنقل الرئيسي');
     mainNav.id='mainNavigation';

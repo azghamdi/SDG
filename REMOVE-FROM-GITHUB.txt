@@ -1,0 +1,7 @@
+احذف الملفات التالية من مستودع GitHub:
+
+open-data.html
+governance.html
+kingdom-polish.css
+
+تمت إزالة جميع الروابط والإشارات المؤدية إليها من صفحات الموقع.

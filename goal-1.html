@@ -36,7 +36,7 @@
         <span class="header__identity-divider"></span>
         <a class="brand nds-brand" href="index.html" aria-label="الهيئة العامة للإحصاء - الرئيسية"><img class="brand__logo nds-brand-logo" src="assets/gastat-logo.svg" alt="الهيئة العامة للإحصاء"></a>
       </div>
-      <nav class="nav" aria-label="التنقل الرئيسي"><a href="index.html">الرئيسية</a><a href="about.html">نبذة</a><a href="methodology.html">المنهجية</a><a class="active" href="index.html#goals">الأهداف</a><a href="index.html#kingdom">المملكة والاستدامة</a><a href="index.html#partners">شركاء البيانات</a><a href="open-data.html">البيانات المفتوحة</a></nav>
+      <nav class="nav" aria-label="التنقل الرئيسي"><a href="index.html">الرئيسية</a><a href="about.html">نبذة</a><a href="methodology.html">المنهجية</a><a class="active" href="index.html#goals">الأهداف</a><a href="index.html#partners">شركاء البيانات</a></nav>
       <div class="header__tools"><button class="icon-btn nds-btn nds-subtle" aria-label="بحث" id="searchBtn"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4 4"></path></svg></button><a class="lang" href="en.html" lang="en" hreflang="en">EN</a><button class="menu-btn" id="menuBtn" aria-label="فتح القائمة" aria-expanded="false"><span></span><span></span><span></span></button></div>
     </div>
   </header>
@@ -55,7 +55,14 @@
             <button class="export-btn export-btn--primary nds-btn nds-primary" id="downloadPdf"><span class="export-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v11m0 0 4-4m-4 4-4-4M5 18v2h14v-2"/></svg></span><span><b>تنزيل الصفحة</b><small>PDF</small></span></button>
             <button class="export-btn export-btn--excel nds-btn nds-secondary" id="downloadExcel" aria-label="تنزيل بيانات الهدف الأول بصيغة Excel"><span class="export-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 3.5h9l3 3V20.5H6zM15 3.5v3h3M9 11l4 5m0-5-4 5"/></svg></span><span><b>تنزيل بيانات الهدف</b><small>ملف Excel</small></span></button>
             <button class="export-btn export-btn--csv nds-btn nds-secondary" id="downloadCsv" aria-label="تنزيل بيانات الهدف الأول بصيغة CSV"><span class="export-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 3.5h9l3 3V20.5H6zM15 3.5v3h3M9 12h6M9 16h6"/></svg></span><span><b>تنزيل بيانات الهدف</b><small>ملف CSV</small></span></button>
+            <button class="export-btn export-btn--api nds-btn nds-secondary" id="openApiService" type="button" aria-expanded="false" aria-controls="apiService"><span class="export-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 8 4 12l4 4M16 8l4 4-4 4M14 5l-4 14"/></svg></span><span><b>مشاركة البيانات</b><small>واجهة API</small></span></button>
           </div>
+          <section class="api-service" id="apiService" hidden aria-labelledby="apiServiceTitle">
+            <div class="api-service__head"><span class="api-service__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 8 4 12l4 4M16 8l4 4-4 4M14 5l-4 14"/></svg></span><div><small>خدمة مشاركة البيانات</small><h2 id="apiServiceTitle">الوصول عبر واجهة برمجة التطبيقات (API)</h2></div><span class="api-service__status">نسخة تجريبية</span></div>
+            <p>تسهّل الخدمة الوصول إلى بيانات الهدف وإعادة استخدامها من قبل الجهات والمستخدمين، وتعزز الاستفادة منها في التطبيقات الرقمية ومحركات البحث وحلول الذكاء الاصطناعي.</p>
+            <div class="api-service__endpoint"><span>المسار المقترح</span><code dir="ltr">/api/v1/sdg/goals/1</code><button type="button" id="copyApiEndpoint">نسخ المسار</button></div>
+            <div class="api-service__actions"><button type="button" class="api-json-btn" id="downloadApiJson"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v11m0 0 4-4m-4 4-4-4M5 18v2h14v-2"/></svg>تنزيل نموذج البيانات بصيغة JSON</button><small>يُستخدم النموذج الحالي للمعاينة، ويُفعّل رابط API الفعلي عند ربط المنصة بمصدر البيانات.</small></div>
+          </section>
         </div>
         <div class="goal-hero__visual" aria-hidden="true">
           <div class="goal-one-tile"><b id="goalTileNumber">1</b><strong id="goalTileTitle">القضاء على الفقر</strong><svg viewBox="0 0 120 100" fill="none" stroke="currentColor" stroke-width="5"><circle cx="28" cy="32" r="11"/><circle cx="60" cy="27" r="13"/><circle cx="92" cy="32" r="11"/><path d="M8 82c0-22 9-34 20-34s20 12 20 34M39 82c0-27 9-42 21-42s21 15 21 42M72 82c0-22 9-34 20-34s20 12 20 34"/></svg></div>
@@ -65,7 +72,7 @@
 
     <section class="coverage-disclosure" aria-labelledby="coverageTitle">
       <div class="container">
-        <div class="coverage-disclosure__head"><div><span>شفافية التغطية</span><h2 id="coverageTitle">حالة بيانات الهدف الأول</h2></div><a href="open-data.html">عرض فهرس البيانات المفتوحة ←</a></div>
+        <div class="coverage-disclosure__head"><div><span>شفافية التغطية</span><h2 id="coverageTitle">حالة بيانات الهدف الأول</h2></div></div>
         <div class="coverage-disclosure__grid">
           <article><strong>13</strong><span>مؤشرًا في الفهرس</span></article>
           <article><strong>9</strong><span>مؤشرات موثقة</span></article>
@@ -87,7 +94,7 @@
     </div></section>
   </main>
 
-  <footer class="footer nds-footer"><div class="container footer__top"><div><h3>نظرة عامة</h3><a href="index.html#goals">أهداف التنمية المستدامة</a><a href="#indicators">المؤشرات</a><a href="open-data.html">البيانات المفتوحة</a></div><div><h3>المساعدة والدعم</h3><a href="methodology.html">المنهجية</a><a href="governance.html">حوكمة النشر</a></div><div class="footer__marks"><div class="footer__mark"><img src="assets/sdg-wheel-saudi-transparent.png" alt="أهداف التنمية المستدامة"></div><span class="footer__marks-divider"></span><div class="footer__mark footer__mark--vision"><img src="assets/saudi-vision-2030.svg" alt="رؤية السعودية 2030"></div></div></div><div class="container footer__bottom"><span>جميع الحقوق محفوظة للهيئة العامة للإحصاء © 2026</span><div><a href="#">سياسة الخصوصية</a><a href="#">شروط الاستخدام</a></div></div></footer>
+  <footer class="footer nds-footer"><div class="container footer__top"><div><h3>نظرة عامة</h3><a href="index.html#goals">أهداف التنمية المستدامة</a><a href="#indicators">المؤشرات</a></div><div><h3>المساعدة والدعم</h3><a href="methodology.html">المنهجية</a></div><div class="footer__marks"><div class="footer__mark"><img src="assets/sdg-wheel-saudi-transparent.png" alt="أهداف التنمية المستدامة"></div><span class="footer__marks-divider"></span><div class="footer__mark footer__mark--vision"><img src="assets/saudi-vision-2030.svg" alt="رؤية السعودية 2030"></div></div></div><div class="container footer__bottom"><span>جميع الحقوق محفوظة للهيئة العامة للإحصاء © 2026</span><div><a href="#">سياسة الخصوصية</a><a href="#">شروط الاستخدام</a></div></div></footer>
 
   <button class="back-to-top" id="backToTop" aria-label="العودة إلى أعلى الصفحة"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 14 6-6 6 6"/></svg></button>
   <div class="search-panel" id="searchPanel" aria-hidden="true"><button id="closeSearch">×</button><div><span>ما الذي تبحث عنه؟</span><input type="search" placeholder="ابحث في الأهداف والمؤشرات..."></div></div>
