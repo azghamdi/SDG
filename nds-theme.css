@@ -917,3 +917,39 @@ html{scroll-behavior:smooth}
 }
 .gastat-sdg .goal:hover .goal__action i{background:rgba(255,255,255,.22)!important}
 .gastat-sdg .goal:focus-visible{outline:3px solid #fff!important;outline-offset:-5px!important}
+
+/* Visible goal number badge inside every SDG card. */
+.gastat-sdg .goal__top{position:static!important}
+.gastat-sdg .goal__number{
+  position:absolute!important;
+  top:14px!important;
+  right:14px!important;
+  left:auto!important;
+  z-index:4!important;
+  display:grid!important;
+  place-items:center!important;
+  width:36px!important;
+  height:36px!important;
+  padding:0!important;
+  border:1px solid rgba(255,255,255,.34)!important;
+  border-radius:10px!important;
+  background:rgba(255,255,255,.15)!important;
+  color:#fff!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.16)!important;
+  font:700 17px/1 Arial,sans-serif!important;
+  font-variant-numeric:tabular-nums!important;
+  letter-spacing:0!important;
+  direction:ltr!important;
+  opacity:1!important;
+}
+@media(max-width:760px){
+  .gastat-sdg .goal__number{
+    top:10px!important;
+    right:10px!important;
+    left:auto!important;
+    width:30px!important;
+    height:30px!important;
+    border-radius:8px!important;
+    font-size:14px!important;
+  }
+}
