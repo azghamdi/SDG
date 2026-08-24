@@ -380,3 +380,17 @@
 .indicator-sidebar nav a{min-height:54px;display:flex;align-items:center;justify-content:flex-start;padding:12px 18px!important}
 .indicator-sidebar nav a b{font-family:Arial,sans-serif;font-size:18px;line-height:1;font-weight:700;color:#243b53}
 .indicator-sidebar nav a.active b{color:#087a4b}
+
+/* Per-indicator Excel download. */
+.simple-indicator__title{position:relative}
+.indicator-excel-btn{align-self:center;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;margin-inline-start:auto;padding:9px 14px;border:1px solid #a9cfb9;border-radius:8px;background:#f0f8f3;color:#12633f;font:600 13px "IBM Plex Sans Arabic",Arial,sans-serif;white-space:nowrap;cursor:pointer;transition:background-color .18s,border-color .18s,box-shadow .18s}
+.indicator-excel-btn:hover:not(:disabled){background:#e4f3ea;border-color:#1b8354;box-shadow:0 4px 12px rgba(27,131,84,.10)}
+.indicator-excel-btn svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.indicator-excel-btn small{padding-inline-start:7px;border-inline-start:1px solid #b9d8c6;color:#4a6758;font:600 11px Arial,sans-serif}
+.indicator-excel-btn:disabled{border-color:#d8dee3;background:#f7f8f9;color:#8a949e;cursor:not-allowed}
+.indicator-excel-btn:disabled small{border-color:#d8dee3;color:#8a949e}
+@media(max-width:760px){
+  .simple-indicator__title{grid-template-columns:50px minmax(0,1fr)}
+  .indicator-excel-btn{grid-column:1/-1;width:100%;margin:4px 0 0}
+}
+@media print{.indicator-excel-btn{display:none!important}}

@@ -178,6 +178,54 @@ const catalogueArticles=displayIndicators.filter(indicator=>!detailedCodes.has(i
 
 publishedContainer.innerHTML=cmsPublication?.indicators?.length?allPublishedIndicators.map(renderOfficialIndicator).join(''):detailedArticles+additionalArticles+catalogueArticles;
 
+// A dedicated Excel download is presented with every indicator.
+publishedContainer.querySelectorAll('.simple-indicator').forEach(article=>{
+  const indicator=displayIndicators.find(item=>indicatorId(item.code)===article.id)
+    ||allPublishedIndicators.find(item=>indicatorId(item.code)===article.id);
+  if(!indicator)return;
+  const hasData=Boolean(indicator.tables?.length);
+  const button=document.createElement('button');
+  button.type='button';
+  button.className='indicator-excel-btn';
+  button.dataset.indicatorCode=indicator.code;
+  button.disabled=!hasData;
+  button.setAttribute('aria-label',hasData?`تنزيل بيانات المؤشر ${indicator.code} بصيغة Excel`:`لا تتوفر بيانات Excel للمؤشر ${indicator.code}`);
+  button.innerHTML=`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5h9l3 3V20.5H6zM15 3.5v3h3M9 11l4 5m0-5-4 5"/></svg><span>${hasData?'تنزيل بيانات المؤشر':'لا تتوفر بيانات'}</span><small>Excel</small>`;
+  article.querySelector('.simple-indicator__title')?.append(button);
+});
+
+function exportIndicatorExcel(indicator){
+  if(!window.XLSX||!indicator?.tables?.length)return;
+  const book=XLSX.utils.book_new();
+  book.Workbook={Views:[{RTL:true}]};
+  indicator.tables.forEach((table,index)=>{
+    const rows=[
+      [`المؤشر ${indicator.code}`],
+      [indicator.title||indicator.name||''],
+      [`مصدر البيانات: ${indicator.source||''}`],
+      [],
+      [table.name],
+      table.columns,
+      ...table.rows
+    ];
+    const sheet=XLSX.utils.aoa_to_sheet(rows);
+    const lastColumn=Math.max(table.columns.length-1,0);
+    sheet['!merges']=[0,1,2,4].map(row=>({s:{r:row,c:0},e:{r:row,c:lastColumn}}));
+    sheet['!cols']=table.columns.map((column,columnIndex)=>({wch:columnIndex===0?42:18}));
+    sheet['!autofilter']={ref:`A6:${XLSX.utils.encode_col(lastColumn)}${6+table.rows.length}`};
+    XLSX.utils.book_append_sheet(book,sheet,`${indicator.code}-${index+1}`.slice(0,31));
+  });
+  XLSX.writeFile(book,`SDG-Indicator-${indicator.code}.xlsx`);
+}
+
+publishedContainer.addEventListener('click',event=>{
+  const button=event.target.closest('.indicator-excel-btn');
+  if(!button||button.disabled)return;
+  const indicator=allPublishedIndicators.find(item=>item.code===button.dataset.indicatorCode)
+    ||displayIndicators.find(item=>item.code===button.dataset.indicatorCode);
+  exportIndicatorExcel(indicator);
+});
+
 const tabLinks=[...indicatorTabs.querySelectorAll('a')];
 tabLinks.forEach((link,index)=>{
   if(index===0) link.setAttribute('aria-current','true');
