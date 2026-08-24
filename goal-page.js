@@ -180,8 +180,8 @@ publishedContainer.innerHTML=cmsPublication?.indicators?.length?allPublishedIndi
 
 // A dedicated Excel download is presented with every indicator.
 publishedContainer.querySelectorAll('.simple-indicator').forEach(article=>{
-  const indicator=displayIndicators.find(item=>indicatorId(item.code)===article.id)
-    ||allPublishedIndicators.find(item=>indicatorId(item.code)===article.id);
+  const indicator=allPublishedIndicators.find(item=>indicatorId(item.code)===article.id)
+    ||displayIndicators.find(item=>indicatorId(item.code)===article.id);
   if(!indicator)return;
   const hasData=Boolean(indicator.tables?.length);
   const button=document.createElement('button');
