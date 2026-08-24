@@ -70,3 +70,43 @@ document.querySelectorAll('.reveal,.goal').forEach(el=>revealObserver.observe(el
 
 document.querySelectorAll('form').forEach(f=>f.addEventListener('submit',e=>e.preventDefault()));
 document.querySelectorAll('.goal[href="#"]').forEach(goal=>goal.addEventListener('click',e=>e.preventDefault()));
+
+const dataPartners=[
+  ['وزارة البيئة والمياه والزراعة','environment-water-agriculture.png'],
+  ['وزارة الداخلية','interior.png'],['وزارة الصحة','health.png'],['وزارة الطاقة','energy.png'],
+  ['وزارة الاقتصاد والتخطيط','economy-planning.png'],['وزارة الخارجية','foreign-affairs.png'],
+  ['وزارة العدل','justice.png'],['البنك المركزي السعودي','sama.png'],['وزارة التعليم','education.png'],
+  ['وزارة الموارد البشرية والتنمية الاجتماعية','human-resources.png'],
+  ['وزارة البلديات والإسكان','municipalities-housing.png'],['وزارة المالية','finance.png'],
+  ['هيئة حقوق الإنسان','human-rights.svg'],['وزارة الاستثمار','investment.png'],
+  ['المركز الوطني لقياس أداء الأجهزة العامة','adaa.svg'],['مجلس المخاطر الوطنية','national-risks.png'],
+  ['الهيئة السعودية للبيانات والذكاء الاصطناعي','sdaia.png']
+];
+const partnersTrack=document.querySelector('#partnersTrack');
+if(partnersTrack){
+  const group=()=>`<div class="partners-slider__group">${dataPartners.map(([name,file])=>`
+    <article class="partner-card ${file==='justice.png'?'partner-card--justice':''}">
+      <span class="partner-card__logo"><img src="assets/partners/${file}" alt="شعار ${name}" loading="lazy"></span>
+      <strong>${name}</strong>
+    </article>`).join('')}</div>`;
+  partnersTrack.innerHTML=group();
+  const viewport=partnersTrack.closest('.partners-slider__viewport');
+  const step=()=>Math.min(254,viewport.clientWidth*.78);
+  const move=direction=>viewport.scrollBy({left:direction*step(),behavior:'smooth'});
+  document.querySelector('#partnersPrev')?.addEventListener('click',()=>move(-1));
+  document.querySelector('#partnersNext')?.addEventListener('click',()=>move(1));
+  if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
+    const advance=()=>{
+      const maxScroll=viewport.scrollWidth-viewport.clientWidth;
+      const atEnd=Math.abs(viewport.scrollLeft)>=maxScroll-8;
+      viewport.scrollTo({left:atEnd?0:viewport.scrollLeft-step(),behavior:'smooth'});
+    };
+    let timer=setInterval(advance,4200);
+    const pause=()=>clearInterval(timer);
+    const resume=()=>{clearInterval(timer);timer=setInterval(advance,4200)};
+    viewport.addEventListener('mouseenter',pause);
+    viewport.addEventListener('mouseleave',resume);
+    viewport.addEventListener('touchstart',pause,{passive:true});
+    viewport.addEventListener('touchend',resume,{passive:true});
+  }
+}

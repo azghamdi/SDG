@@ -575,6 +575,30 @@ html{scroll-behavior:smooth}
 .gastat-sdg .btn--primary:hover{box-shadow:0 9px 22px rgba(12,81,56,.28)}
 @media(max-width:760px){.gastat-sdg .partner-logos{gap:8px}.gastat-sdg .partner-logos>div{border-radius:9px}.gastat-sdg .partners__note{display:flex;border-radius:10px;line-height:1.7}}
 
+/* Institutional partners carousel */
+.gastat-sdg .partners-slider{position:relative;margin-top:10px;padding-bottom:50px;overflow:hidden}
+.gastat-sdg .partners-slider{padding:24px 24px 76px;border:1px solid #d9e3de;border-radius:20px;background:#f7f9f8;box-shadow:0 12px 34px rgba(24,65,49,.06)}
+.gastat-sdg .partners-slider:before,.gastat-sdg .partners-slider:after{content:"";position:absolute;top:18px;bottom:68px;z-index:2;width:76px;pointer-events:none}
+.gastat-sdg .partners-slider:before{right:18px;background:linear-gradient(270deg,#f7faf8 12%,transparent)}
+.gastat-sdg .partners-slider:after{left:18px;background:linear-gradient(90deg,#f8fbf9 12%,transparent)}
+.gastat-sdg .partners-slider__viewport{position:relative;overflow-x:auto;overflow-y:hidden;padding:14px 0 22px;direction:rtl;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-inline:contain}
+.gastat-sdg .partners-slider__viewport::-webkit-scrollbar{display:none}
+.gastat-sdg .partners-slider__track{display:flex;width:max-content;animation:none;will-change:auto}
+.gastat-sdg .partners-slider__group{display:flex;gap:18px;padding-inline:8px}
+.gastat-sdg .partner-card{position:relative;flex:0 0 232px;height:218px;display:flex;flex-direction:column;align-items:stretch;justify-content:stretch;gap:0;padding:0;overflow:hidden;border:1px solid #d8e1dc;border-radius:14px;background:#fff;box-shadow:0 4px 14px rgba(23,63,48,.05);transition:transform .22s,border-color .22s,box-shadow .22s;direction:rtl;scroll-snap-align:start}
+.gastat-sdg .partner-card:before{content:"";position:absolute;top:0;right:0;left:0;z-index:1;height:4px;background:#1b8354}
+.gastat-sdg .partner-card:hover{transform:translateY(-3px);border-color:#8fbaa5;box-shadow:0 12px 26px rgba(22,72,53,.1)}
+.gastat-sdg .partner-card__logo{display:flex;align-items:center;justify-content:center;width:100%;height:148px;padding:24px 22px 18px;overflow:hidden;border:0;border-bottom:1px solid #e8eeeb;border-radius:0;background:#fff}
+.gastat-sdg .partner-card__logo img{display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}
+.gastat-sdg .partner-card--justice .partner-card__logo img{transform:scale(1.48)}
+.gastat-sdg .partner-card strong{width:100%;min-height:70px;display:flex;align-items:center;justify-content:center;padding:12px 16px;color:#213a31;background:#f8faf9;font-size:14px;line-height:1.6;font-weight:600;text-align:center}
+.gastat-sdg .partners-slider__controls{position:absolute;right:0;left:0;bottom:14px;z-index:3;display:flex;align-items:center;justify-content:center;gap:10px}
+.gastat-sdg .partners-slider__controls button{display:grid;place-items:center;width:42px;height:42px;padding:0;border:1px solid #b9d3c5;border-radius:50%;background:#fff;color:#12633f;cursor:pointer;box-shadow:0 4px 12px rgba(22,72,53,.08);transition:background-color .2s,border-color .2s,color .2s,transform .2s}
+.gastat-sdg .partners-slider__controls button:hover{border-color:#1b8354;background:#f2f8f5}
+.gastat-sdg .partners-slider__controls button:hover{transform:translateY(-2px);background:#1b8354;color:#fff}.gastat-sdg .partners-slider__controls svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+@media(max-width:760px){.gastat-sdg .partners-slider{padding:14px 10px 68px;border-radius:15px}.gastat-sdg .partners-slider:before,.gastat-sdg .partners-slider:after{width:26px;top:14px;bottom:68px}.gastat-sdg .partners-slider:before{right:10px}.gastat-sdg .partners-slider:after{left:10px}.gastat-sdg .partners-slider__group{gap:12px}.gastat-sdg .partner-card{flex-basis:184px;height:184px}.gastat-sdg .partner-card__logo{height:120px;padding:20px 17px 14px}.gastat-sdg .partner-card strong{min-height:64px;padding:10px 12px;font-size:12px}.gastat-sdg .partners-slider__controls{right:14px;left:14px}}
+@media(prefers-reduced-motion:reduce){.gastat-sdg .partners-slider__viewport{scroll-behavior:auto}}
+
 /* Rebuilt Kingdom section: structured content and a cohesive Vision panel */
 .gastat-sdg .kingdom{
   padding-block:96px;
