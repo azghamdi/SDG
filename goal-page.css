@@ -394,3 +394,13 @@
   .indicator-excel-btn{grid-column:1/-1;width:100%;margin:4px 0 0}
 }
 @media print{.indicator-excel-btn{display:none!important}}
+
+/* Filters attached to every indicator data table. */
+.table-filter-bar{display:grid;grid-template-columns:minmax(220px,1fr) minmax(180px,auto) auto auto;align-items:end;gap:10px;padding:14px 17px;border-bottom:1px solid #e4e7ec;background:#f8faf9}
+.table-search{position:relative;display:block}.table-search svg{position:absolute;top:50%;right:13px;width:18px;height:18px;transform:translateY(-50%);fill:none;stroke:#52606d;stroke-width:1.8;stroke-linecap:round}.table-search input,.table-category select{width:100%;height:42px;border:1px solid #cfd8d3;border-radius:7px;background:#fff;color:#243b53;font:500 13px "IBM Plex Sans Arabic",Arial,sans-serif;outline:0}.table-search input{padding:8px 42px 8px 12px}.table-search input:focus,.table-category select:focus{border-color:#1b8354;box-shadow:0 0 0 3px rgba(27,131,84,.11)}
+.table-category{display:grid;grid-template-columns:auto minmax(120px,1fr);align-items:center;gap:8px}.table-category>span{color:#52606d;font-size:12px;font-weight:600}.table-category select{padding:7px 10px}
+.table-filter-reset{height:42px;padding:7px 14px;border:1px solid #b8cec2;border-radius:7px;background:#fff;color:#12633f;font:600 12px "IBM Plex Sans Arabic",Arial,sans-serif;cursor:pointer}.table-filter-reset:hover{border-color:#1b8354;background:#eef7f1}
+.table-filter-count{display:flex;align-items:center;justify-content:center;height:42px;min-width:82px;padding:7px 10px;border-radius:7px;background:#e8f4ed;color:#12633f;font-size:12px;font-weight:600;white-space:nowrap}
+.data-table-card tbody tr[hidden]{display:none}.table-filter-empty .table-wrap:after{content:"لا توجد نتائج مطابقة";display:block;padding:28px;text-align:center;color:#667085;font-size:13px}
+@media(max-width:760px){.table-filter-bar{grid-template-columns:1fr 1fr;padding:12px}.table-search{grid-column:1/-1}.table-category{grid-column:1/-1}.table-filter-reset,.table-filter-count{width:100%}}
+@media print{.table-filter-bar{display:none!important}.data-table-card tbody tr[hidden]{display:table-row!important}}

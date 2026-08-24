@@ -226,6 +226,48 @@ publishedContainer.addEventListener('click',event=>{
   exportIndicatorExcel(indicator);
 });
 
+// Lightweight client-side filters for every published data table.
+publishedContainer.querySelectorAll('.data-table-card').forEach((card,tableIndex)=>{
+  const table=card.querySelector('table');
+  const body=table?.tBodies?.[0];
+  if(!table||!body)return;
+  const rows=[...body.rows];
+  const firstColumnValues=[...new Set(rows.map(row=>row.cells[0]?.textContent.trim()).filter(Boolean))];
+  const toolbar=document.createElement('div');
+  toolbar.className='table-filter-bar';
+  toolbar.innerHTML=`
+    <label class="table-search"><span class="sr-only">البحث في الجدول</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="m16 16 4 4"/></svg><input type="search" placeholder="ابحث في بيانات الجدول" aria-label="البحث في الجدول"></label>
+    ${firstColumnValues.length>1?`<label class="table-category"><span>الفئة</span><select aria-label="تصفية الجدول حسب الفئة"><option value="">جميع الفئات</option>${firstColumnValues.map(value=>`<option value="${value.replaceAll('"','&quot;')}">${value}</option>`).join('')}</select></label>`:''}
+    <button type="button" class="table-filter-reset">مسح الفلاتر</button>
+    <output class="table-filter-count" aria-live="polite">${rows.length} نتيجة</output>`;
+  card.querySelector('.data-table-card__head')?.after(toolbar);
+  const search=toolbar.querySelector('input');
+  const category=toolbar.querySelector('select');
+  const count=toolbar.querySelector('.table-filter-count');
+  const applyFilters=()=>{
+    const query=search.value.trim().toLocaleLowerCase('ar');
+    const selected=category?.value||'';
+    let visible=0;
+    rows.forEach(row=>{
+      const text=row.textContent.toLocaleLowerCase('ar');
+      const firstCell=row.cells[0]?.textContent.trim()||'';
+      const matches=(!query||text.includes(query))&&(!selected||firstCell===selected);
+      row.hidden=!matches;
+      if(matches)visible++;
+    });
+    count.textContent=`${visible} ${visible===1?'نتيجة':'نتائج'}`;
+    card.classList.toggle('table-filter-empty',visible===0);
+  };
+  search.addEventListener('input',applyFilters);
+  category?.addEventListener('change',applyFilters);
+  toolbar.querySelector('.table-filter-reset').addEventListener('click',()=>{
+    search.value='';
+    if(category)category.value='';
+    applyFilters();
+    search.focus();
+  });
+});
+
 const tabLinks=[...indicatorTabs.querySelectorAll('a')];
 tabLinks.forEach((link,index)=>{
   if(index===0) link.setAttribute('aria-current','true');
