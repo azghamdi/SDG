@@ -118,7 +118,7 @@ if(cmsPublication?.goal){
 
 indicatorTabs.innerHTML=displayIndicators.map((indicator,index)=>`
   <a class="${index===0?'active':''}" href="#${indicatorId(indicator.code)}">
-    <span>المؤشر</span><b dir="ltr">${indicator.code}</b><small>${indicatorShortName(indicator)}</small>
+    <b dir="ltr">${indicator.code}</b>
   </a>`).join('');
 
 const detailedArticles=`
@@ -256,6 +256,33 @@ function exportCsv(){
 ['downloadPdf'].forEach(id=>document.querySelector('#'+id)?.addEventListener('click',exportPdf));
 ['downloadExcel'].forEach(id=>document.querySelector('#'+id)?.addEventListener('click',exportExcel));
 ['downloadCsv'].forEach(id=>document.querySelector('#'+id)?.addEventListener('click',exportCsv));
+
+const apiService=document.querySelector('#apiService');
+const apiToggle=document.querySelector('#openApiService');
+apiToggle?.addEventListener('click',()=>{
+  const open=apiService.hidden;
+  apiService.hidden=!open;
+  apiToggle.setAttribute('aria-expanded',String(open));
+  if(open) apiService.scrollIntoView({behavior:'smooth',block:'nearest'});
+});
+document.querySelector('#copyApiEndpoint')?.addEventListener('click',async event=>{
+  const endpoint='/api/v1/sdg/goals/1';
+  try{await navigator.clipboard.writeText(endpoint)}catch{
+    const field=document.createElement('textarea');field.value=endpoint;document.body.appendChild(field);field.select();document.execCommand('copy');field.remove();
+  }
+  const button=event.currentTarget;const oldText=button.textContent;button.textContent='تم النسخ';setTimeout(()=>button.textContent=oldText,1600);
+});
+document.querySelector('#downloadApiJson')?.addEventListener('click',()=>{
+  const payload={
+    api_version:'v1',
+    generated_at:new Date().toISOString(),
+    goal:{number:goalContent.number,title:goalContent.title,updated:goalContent.updated,source:goalContent.source},
+    targets:goalContent.targets,
+    indicators:allPublishedIndicators
+  };
+  const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json;charset=utf-8'});
+  const link=document.createElement('a');link.href=URL.createObjectURL(blob);link.download='sdg-goal-01-api-sample.json';link.click();setTimeout(()=>URL.revokeObjectURL(link.href),1000);
+});
 
 const sections=[...document.querySelectorAll('.goal-section')];
 const navLinks=[...document.querySelectorAll('.goal-subnav nav a')];
